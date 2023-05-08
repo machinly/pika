@@ -24,6 +24,7 @@ func ExecCmdWithOutput(cmd string, args ...string) (string, string, error) {
 	var stdout, stderr []byte
 	go func() {
 		defer wg.Done()
+		var err error
 		stdout, err = io.ReadAll(stdoutReader)
 		if err != nil {
 			return
@@ -31,6 +32,7 @@ func ExecCmdWithOutput(cmd string, args ...string) (string, string, error) {
 	}()
 	go func() {
 		defer wg.Done()
+		var err error
 		stderr, err = io.ReadAll(stderrReader)
 		if err != nil {
 			return
