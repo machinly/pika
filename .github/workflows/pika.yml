@@ -46,3 +46,17 @@ jobs:
         # Execute tests defined by the CMake configuration.
         # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
         run: ctest -C ${{env.BUILD_TYPE}}
+
+  build_on_arm:
+    # Build pika on arm64 platform.
+    # Because the arm64 platform is not supported by Github Actions, we use the docker buildx base on qemu to emulate the arm64 platform.
+    runs-on: ubuntu-latest
+    
+    steps: 
+      - uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Pika on ARM 
+        run: ./build_docker.sh -p linux/arm64 
