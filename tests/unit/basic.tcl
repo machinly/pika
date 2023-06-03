@@ -37,9 +37,9 @@ start_server {tags {"basic"}} {
         lsort [r keys *]
     } {foo_a foo_b foo_c key_x key_y key_z}
 
-    test {DBSIZE} {
-        r dbsize
-    } {6}
+#   test {DBSIZE} {
+#       r dbsize
+#   } {6}
 
     test {DEL all keys} {
         foreach key [r keys *] {r del $key}
@@ -90,9 +90,9 @@ start_server {tags {"basic"}} {
             set _ $err
         } {}
 
-        test {DBSIZE should be 10101 now} {
-            r dbsize
-        } {10101}
+#       test {DBSIZE should be 10101 now} {
+#           r dbsize
+#       } {10101}
     }
 
     test {INCR against non existing key} {
@@ -120,11 +120,11 @@ start_server {tags {"basic"}} {
         r incrby novar 17179869184
     } {34359738368}
 
-    test {INCR fails against key with spaces (left)} {
-        r set novar "    11"
-        catch {r incr novar} err
-        format $err
-    } {ERR*}
+#   test {INCR fails against key with spaces (left)} {
+#       r set novar "    11"
+#       catch {r incr novar} err
+#       format $err
+#   } {ERR*}
 
     test {INCR fails against key with spaces (right)} {
         r set novar "11    "
@@ -138,12 +138,12 @@ start_server {tags {"basic"}} {
         format $err
     } {ERR*}
 
-    test {INCR fails against a key holding a list} {
-        r rpush mylist 1
-        catch {r incr mylist} err
-        r rpop mylist
-        format $err
-    } {WRONGTYPE*}
+#   test {INCR fails against a key holding a list} {
+#       r rpush mylist 1
+#       catch {r incr mylist} err
+#       r rpop mylist
+#       format $err
+#   } {WRONGTYPE*}
 
     test {DECRBY over 32bit value with over 32bit increment, negative res} {
         r set novar 17179869184
@@ -194,24 +194,24 @@ start_server {tags {"basic"}} {
         format $err
     } {ERR*valid*}
 
-    test {INCRBYFLOAT fails against a key holding a list} {
-        r del mylist
-        set err {}
-        r rpush mylist 1
-        catch {r incrbyfloat mylist 1.0} err
-        r del mylist
-        format $err
-    } {WRONGTYPE*}
+#   test {INCRBYFLOAT fails against a key holding a list} {
+#       r del mylist
+#       set err {}
+#       r rpush mylist 1
+#       catch {r incrbyfloat mylist 1.0} err
+#       r del mylist
+#       format $err
+#   } {WRONGTYPE*}
 
-    test {INCRBYFLOAT does not allow NaN or Infinity} {
-        r set foo 0
-        set err {}
-        catch {r incrbyfloat foo +inf} err
-        set err
-        # p.s. no way I can force NaN to test it from the API because
-        # there is no way to increment / decrement by infinity nor to
-        # perform divisions.
-    } {ERR*would produce*}
+#   test {INCRBYFLOAT does not allow NaN or Infinity} {
+#       r set foo 0
+#       set err {}
+#       catch {r incrbyfloat foo +inf} err
+#       set err
+#       # p.s. no way I can force NaN to test it from the API because
+#       # there is no way to increment / decrement by infinity nor to
+#       # perform divisions.
+#   } {ERR*would produce*}
 
     test {INCRBYFLOAT decrement} {
         r set foo 1

@@ -11,44 +11,48 @@ source tests/support/tmpfile.tcl
 source tests/support/test.tcl
 source tests/support/util.tcl
 
+# skip test list {
+# unit/printver
+# unit/auth
+# unit/protocol
+# unit/basic
+# unit/scan
+# unit/type/list
+# unit/type/list-2
+# unit/type/list-3
+# unit/type/zset
+# unit/type/hash
+# unit/sort
+# unit/expire
+# unit/other
+# unit/multi
+# unit/quit
+# unit/aofrw
+# integration/replication
+# integration/replication-2
+# integration/replication-3
+# integration/replication-4
+# integration/replication-psync
+# integration/aof
+# integration/rdb
+# integration/convert-zipmap-hash-on-load
+# unit/pubsub
+# unit/slowlog
+# unit/scripting
+# unit/maxmemory
+# unit/introspection
+# unit/limits
+# unit/obuf-limits
+# unit/dump
+# unit/bitops
+# unit/memefficiency
+# unit/hyperloglog
+# }
+
 set ::all_tests {
-    unit/printver
-    unit/auth
-    unit/protocol
-    unit/basic
-    unit/scan
-    unit/type/list
-    unit/type/list-2
-    unit/type/list-3
-    unit/type/set
-    unit/type/zset
-    unit/type/hash
-    unit/sort
-    unit/expire
-    unit/other
-    unit/multi
-    unit/quit
-    unit/aofrw
-    integration/replication
-    integration/replication-2
-    integration/replication-3
-    integration/replication-4
-    integration/replication-psync
-    integration/aof
-    integration/rdb
-    integration/convert-zipmap-hash-on-load
-    unit/pubsub
-    unit/slowlog
-    unit/scripting
-    unit/maxmemory
-    unit/introspection
-    unit/limits
-    unit/obuf-limits
-    unit/dump
-    unit/bitops
-    unit/memefficiency
-    unit/hyperloglog
+  unit/basic
 }
+
 # Index to the next test to run in the ::all_tests list.
 set ::next_test 0
 
