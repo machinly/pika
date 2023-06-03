@@ -50,7 +50,7 @@ jobs:
       - name: Unit Test
         working-directory: ${{github.workspace}}
         run: |
-          ./pikatest.sh all
+          ./pikatests.sh all
 
   build_on_centos:
     # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
