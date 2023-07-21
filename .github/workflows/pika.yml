@@ -146,8 +146,8 @@ jobs:
       - name: Start pika master and slave
         run: |
           cd build
-          chmod +x tests/integration/start_master_and_slave.sh
-          sh tests/integration/start_master_and_slave.sh
+          chmod +x ../tests/integration/start_master_and_slave.sh
+          sh ../tests/integration/start_master_and_slave.sh
 
       - name: Run Python E2E Tests
         run: |
