@@ -145,6 +145,7 @@ jobs:
         # master on port 9221, slave on port 9231, all with 2 db
       - name: Start pika master and slave
         run: |
+          cd build
           chmod +x tests/integration/start_master_and_slave.sh
           sh tests/integration/start_master_and_slave.sh
 
