@@ -2,7 +2,7 @@ name: Publish Docker image Nightly
 
 on:
   schedule:
-    - cron: '0 2 * * *' # run at 2 AM UTC
+    - cron: '20 4 * * *' # run at 2 AM UTC
 
 jobs:
   push_pika_to_registry:
