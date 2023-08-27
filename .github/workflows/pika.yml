@@ -164,13 +164,13 @@ jobs:
         if: ${{ steps.cache.output.cache-hit != 'true' }}
         run: |
           brew update
-          brew unlink python
-          rm '/usr/local/bin/2to3'
-          rm '/usr/local/bin/2to3-3.11'
-          rm '/usr/local/bin/idle3'
-          rm '/usr/local/bin/idle3.11'
-          rm '/usr/local/bin/pydoc3'
-          brew install --force protobuf llvm 
+          #brew unlink python
+          #rm '/usr/local/bin/2to3'
+          #rm '/usr/local/bin/2to3-3.11'
+          #rm '/usr/local/bin/idle3'
+          #rm '/usr/local/bin/idle3.11'
+          #rm '/usr/local/bin/pydoc3'
+          brew install --overwrite python autoconf protobuf llvm wget git
           brew install gcc@10 automake cmake make binutils
           python3 -m pip install --upgrade pip
           python3 -m pip install redis
