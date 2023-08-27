@@ -164,7 +164,7 @@ jobs:
         if: ${{ steps.cache.output.cache-hit != 'true' }}
         run: |
           brew update
-          brew unlink python
+          brew unlink python bin/2to3
           brew install --force protobuf llvm 
           brew install gcc@10 automake cmake make binutils
           python3 -m pip install --upgrade pip
